@@ -488,7 +488,7 @@ export const healthCheckups = [
 
 export const quickLinks = [
   { name: "About Hospital", href: "/about" },
-  { name: "Meet the Doctor", href: "/doctor" },
+  
   { name: "Departments", href: "/departments" },
   { name: "Treatments", href: "/treatments" },
   { name: "Services", href: "/services" },

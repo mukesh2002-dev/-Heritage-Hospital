@@ -9,12 +9,12 @@ import { EmergencySection } from "@/components/sections/emergency-section";
 import { SpecialtiesSection } from "@/components/sections/specialties-section";
 import { PatientJourney } from "@/components/sections/patient-journey";
 import { FacilitiesSection } from "@/components/sections/facilities-section";
-import { TestimonialsSection } from "@/components/sections/testimonials-section";
+// import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { GoogleReviewsSection } from "@/components/sections/google-reviews-section";
-import { SuccessStories } from "@/components/sections/success-stories";
+// import { SuccessStories } from "@/components/sections/success-stories";
 // import { PackagesSection } from "@/components/sections/packages-section";
 import { InsuranceSection } from "@/components/sections/insurance-section";
-import { GallerySection } from "@/components/sections/gallery-section";
+// import { GallerySection } from "@/components/sections/gallery-section";
 // import { VideosSection } from "@/components/sections/videos-section";
 import { FAQSection } from "@/components/sections/faq-section";
 import { BlogsSection } from "@/components/sections/blogs-section";
@@ -42,12 +42,12 @@ export default function HomePage() {
       <SpecialtiesSection />
       <PatientJourney />
       <FacilitiesSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <GoogleReviewsSection />
-      <SuccessStories />
+      {/* <SuccessStories /> */}
       {/* <PackagesSection /> */}
       <InsuranceSection />
-      <GallerySection />
+      {/* <GallerySection /> */}
       {/* <VideosSection /> */}
       <FAQSection />
       <BlogsSection />

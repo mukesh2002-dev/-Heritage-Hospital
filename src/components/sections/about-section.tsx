@@ -3,22 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight, ShieldCheck, Award, Users, HeartHandshake, Building2 } from "lucide-react";
+import { CheckCircle2, ArrowRight, ShieldCheck, Building2 } from "lucide-react";
 import { site } from "@/lib/site";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Reveal } from "@/components/shared/reveal";
 import { Counter } from "@/components/shared/counter";
 import { TiltCard } from "@/components/shared/tilt-card";
 import { Button } from "@/components/ui/button";
-import { MedicalParticles } from "@/components/three";
 import { Badge } from "@/components/ui/badge";
 
-const highlights = [
-  { icon: ShieldCheck, title: "Patient Safety First", text: "Strict infection control protocols and sterility in every procedure." },
-  { icon: Award, title: "18+ Years of Excellence", text: "Proven outcomes across joints, spine, trauma and rehabilitation." },
-  { icon: Users, title: "85,000+ Happy Patients", text: "Families across North Bihar trust us with their most precious care." },
-  { icon: HeartHandshake, title: "Compassionate Team", text: "Doctors, nurses and physiotherapists who treat you like family." },
-];
+
 
 const tickPoints = [
   "Advanced modular operation theatres",
@@ -33,7 +27,6 @@ export function AboutSection() {
   return (
     <section id="about" className="relative overflow-hidden bg-background py-24 sm:py-32">
       <div className="bg-mesh absolute inset-0 opacity-70" />
-      <MedicalParticles count={500} className="pointer-events-none absolute inset-0 opacity-60" />
 
       <div className="relative mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:items-center">
         {/* Visual side */}
@@ -112,17 +105,7 @@ export function AboutSection() {
             </ul>
           </Reveal>
 
-          <div className="mt-10 grid grid-cols-2 gap-4">
-            {highlights.map((h, i) => (
-              <Reveal key={h.title} delay={0.1 * i}>
-                <div className="group h-full rounded-2xl border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-soft">
-                  <h.icon className="h-7 w-7 text-primary transition-transform group-hover:scale-110" />
-                  <p className="mt-3 text-sm font-bold">{h.title}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{h.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+         
 
           <Reveal delay={0.3}>
             <div className="mt-10 flex flex-wrap items-center gap-4">

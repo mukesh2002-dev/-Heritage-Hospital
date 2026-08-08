@@ -60,8 +60,6 @@ export const nav: NavItem[] = [
     href: "/about",
     children: [
       { label: "About Hospital", href: "/about" },
-      { label: "Meet the Doctor", href: "/doctor" },
-      { label: "Patient Stories", href: "/patient-stories" },
       { label: "Career", href: "/career" },
     ],
   },
@@ -90,26 +88,12 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Services", href: "/services" },
-  {
-    label: "Emergency",
-    href: "/emergency",
-    children: [
-      { label: "24×7 Emergency", href: "/emergency" },
-      { label: "Ambulance", href: "/emergency#ambulance" },
-      { label: "Trauma Care", href: "/emergency#trauma" },
-      { label: "ICU", href: "/emergency#icu" },
-    ],
-  },
+ 
   { label: "Gallery", href: "/gallery" },
   {
-    label: "Media",
+    label: "Blogs",
     href: "/blogs",
-    children: [
-      { label: "Blogs", href: "/blogs" },
-      { label: "News", href: "/blogs?tab=news" },
-      { label: "Videos", href: "/gallery#videos" },
-      { label: "Gallery", href: "/gallery" },
-    ],
+    
   },
   { label: "Contact", href: "/contact" },
 ];

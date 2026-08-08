@@ -2,15 +2,42 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock, ArrowUpRight, Newspaper } from "lucide-react";
+import * as React from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { Calendar, Clock, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { blogs, news } from "@/lib/data";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function BlogsSection() {
-  const featured = blogs.find((b) => b.featured) ?? blogs[0];
-  const rest = blogs.filter((b) => b.slug !== featured.slug).slice(0, 3);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [active, setActive] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setActive(emblaApi.selectedScrollSnap());
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi]);
+
+  React.useEffect(() => {
+    if (!emblaApi) return;
+    const id = setInterval(() => {
+      if (!emblaApi.canScrollNext()) {
+        emblaApi.scrollTo(0);
+      } else {
+        emblaApi.scrollNext();
+      }
+    }, 4000);
+    return () => clearInterval(id);
+  }, [emblaApi]);
 
   return (
     <section className="relative overflow-hidden bg-surface py-24 sm:py-32">
@@ -31,86 +58,95 @@ export function BlogsSection() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          {/* Featured */}
-          <Reveal>
-            <Link href={`/blogs/${featured.slug}`} className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all duration-500 hover:-translate-y-1 hover:shadow-soft">
-              <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900">
-                <Image
-                  src={featured.image}
-                  alt={featured.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <span className="absolute left-5 top-5 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-primary backdrop-blur-md shadow">Featured</span>
-              </div>
-              <div className="flex flex-1 flex-col p-7">
-                <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                  <span className="rounded-full bg-accent px-2.5 py-1 font-semibold text-primary">{featured.category}</span>
-                  <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {featured.date}</span>
-                  <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {featured.readTime}</span>
-                </div>
-                <h3 className="font-display mt-4 text-xl font-bold leading-snug transition-colors group-hover:text-primary sm:text-2xl">
-                  {featured.title}
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{featured.excerpt}</p>
-                <p className="mt-5 flex items-center gap-2 text-sm font-semibold text-secondary">
-                  Read Article <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </p>
-              </div>
-            </Link>
-          </Reveal>
-
-          {/* Others */}
-          <div className="flex flex-col gap-5">
-            {rest.map((b, i) => (
-              <Reveal key={b.slug} delay={0.07 * i}>
-                <Link href={`/blogs/${b.slug}`} className="group flex gap-5 rounded-3xl border border-border bg-background p-5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-soft">
-                  <div className="relative hidden h-28 w-32 shrink-0 overflow-hidden rounded-2xl bg-slate-900 sm:block">
-                    <Image
-                      src={b.image}
-                      alt={b.title}
-                      fill
-                      sizes="128px"
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+        {/* Blog cards carousel */}
+        <Reveal delay={0.1}>
+          <div className="mt-14">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex touch-pan-y">
+                {blogs.map((b, index) => (
+                  <div
+                    key={b.slug}
+                    className="min-w-0 shrink-0 grow-0 basis-full px-3 sm:basis-1/2 lg:basis-1/3"
+                  >
+                    <Link
+                      href={`/blogs/${b.slug}`}
+                      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-soft"
+                    >
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
+                        <Image
+                          src={b.image}
+                          alt={b.title}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                        <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 p-5 text-xs text-white">
+                          <span className="rounded-full bg-white/90 px-2.5 py-1 font-bold text-primary backdrop-blur-md">
+                            {b.category}
+                          </span>
+                          <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {b.date}</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-1 flex-col p-6">
+                        <h3 className="font-display text-lg font-bold leading-snug transition-colors group-hover:text-primary">
+                          {b.title}
+                        </h3>
+                        <p className="mt-3 flex-1 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{b.excerpt}</p>
+                        <div className="mt-5 flex items-center justify-between">
+                          <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                            <Clock className="h-3.5 w-3.5" /> {b.readTime}
+                          </span>
+                          <span className="flex items-center gap-2 text-sm font-semibold text-secondary">
+                            Read Article <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
                   </div>
-                  <div className="flex flex-1 flex-col">
-                    <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
-                      <span className="rounded-full bg-accent px-2 py-0.5 font-semibold text-primary">{b.category}</span>
-                      <span>{b.date}</span>
-                    </div>
-                    <h3 className="font-display mt-2 text-base font-bold leading-snug transition-colors group-hover:text-primary">{b.title}</h3>
-                    <p className="mt-1.5 line-clamp-2 text-xs text-muted-foreground">{b.excerpt}</p>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {/* News ticker */}
-        <Reveal delay={0.2}>
-          <div className="mt-12 overflow-hidden rounded-3xl border border-border bg-background">
-            <div className="flex items-center gap-3 border-b border-border bg-gradient-to-r from-primary to-secondary px-6 py-3 text-white">
-              <Newspaper className="h-5 w-5" />
-              <span className="text-sm font-bold uppercase tracking-widest">Hospital News</span>
+                ))}
+              </div>
             </div>
-            <div className="divide-y divide-border">
-              {news.map((n) => (
-                <div key={n.title} className="group flex flex-col gap-1 px-6 py-4 transition-colors hover:bg-accent/40 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-                  <div>
-                    <p className="text-sm font-semibold transition-colors group-hover:text-primary">{n.title}</p>
-                    <p className="text-xs text-muted-foreground">{n.excerpt}</p>
-                  </div>
-                  <span className="shrink-0 text-xs font-medium text-muted-foreground">{n.date}</span>
-                </div>
-              ))}
+
+            {/* Controls — dots at bottom */}
+            <div className="mt-10 flex items-center justify-center gap-6">
+              <button
+                type="button"
+                aria-label="Previous articles"
+                onClick={() => emblaApi?.scrollPrev()}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:border-primary/40 hover:text-primary"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <div className="flex items-center gap-2.5">
+                {blogs.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    aria-label={`Go to slide ${index + 1}`}
+                    onClick={() => emblaApi?.scrollTo(index)}
+                    className={cn(
+                      "h-2.5 w-2.5 rounded-full transition-all duration-300",
+                      active === index ? "bg-primary scale-125" : "bg-slate-300 hover:bg-slate-400 dark:bg-slate-700"
+                    )}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                aria-label="Next articles"
+                onClick={() => emblaApi?.scrollNext()}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition hover:border-primary/40 hover:text-primary"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </Reveal>
+
+        
       </div>
     </section>
   );
