@@ -12,7 +12,7 @@ export default function TermsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Terms of Use", path: "/terms" }])) }} />
-      <PageHero title="Terms of Use" subtitle="Please read these terms carefully before using our website." breadcrumbs={[{ name: "Terms of Use", path: "/terms" }]} />
+      <PageHero title="Terms of Use" subtitle="Please read these terms carefully before using our website." breadcrumbs={[{ name: "Terms of Use", path: "/terms" }]} image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1920&auto=format&fit=crop" imageAlt="Terms and conditions document" />
       <section className="bg-background py-16">
         <div className="mx-auto max-w-4xl space-y-8 px-6">
           {[

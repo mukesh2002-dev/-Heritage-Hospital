@@ -20,6 +20,8 @@ export default function DepartmentsPage() {
         title="Our Departments"
         subtitle="Every department is purpose-built — combining technology, expertise and compassion for complete orthopaedic recovery."
         breadcrumbs={[{ name: "Departments", path: "/departments" }]}
+        image="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Modern hospital corridor"
       />
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl space-y-8 px-6">

@@ -20,6 +20,8 @@ export default function FacilitiesPage() {
         title="Our Facilities"
         subtitle="World-class infrastructure built around one goal — your safe, comfortable and complete recovery."
         breadcrumbs={[{ name: "Facilities", path: "/facilities" }]}
+        image="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Advanced MRI and diagnostic imaging facility"
       />
       <FacilitiesSection />
       <PatientJourney />

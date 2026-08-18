@@ -25,6 +25,8 @@ export default function DoctorPage() {
         title={site.doctor}
         subtitle="MBBS, MS (Orthopaedics) — Bone, Joint, Spine & Trauma Surgeon. The most trusted orthopaedic name in North Bihar."
         breadcrumbs={[{ name: "Doctor", path: "/doctor" }]}
+        image="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Orthopaedic surgeon consulting a patient"
       />
       <DoctorSection />
       <section className="bg-surface py-20">

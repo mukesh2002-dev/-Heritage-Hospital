@@ -55,14 +55,7 @@ export type NavItem = {
 
 export const nav: NavItem[] = [
   { label: "Home", href: "/" },
-  {
-    label: "About",
-    href: "/about",
-    children: [
-      { label: "About Hospital", href: "/about" },
-      { label: "Career", href: "/career" },
-    ],
-  },
+  { label: "About", href: "/about" },
   {
     label: "Departments",
     href: "/departments",
@@ -87,8 +80,14 @@ export const nav: NavItem[] = [
       { label: "Sports Injury", href: "/treatments#sports" },
     ],
   },
-  { label: "Services", href: "/services" },
- 
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Career", href: "/career" },
+      { label: "Tenders", href: "/tender" },
+    ],
+  },
   { label: "Gallery", href: "/gallery" },
   {
     label: "Blogs",

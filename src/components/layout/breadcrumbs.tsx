@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -29,17 +30,31 @@ export function PageHero({
   subtitle,
   breadcrumbs,
   children,
+  image,
+  imageAlt = "",
 }: {
   title: string;
   subtitle?: string;
   breadcrumbs: { name: string; path?: string }[];
   children?: React.ReactNode;
+  image?: string;
+  imageAlt?: string;
 }) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[#04141d] via-[#0b2f44] to-[#04141d] pb-16 pt-16 text-white">
-      <div className="bg-grid absolute inset-0 opacity-[0.15]" />
-      <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-primary/30 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-secondary/20 blur-3xl" />
+      {image ? (
+        <div className="absolute inset-0">
+          <Image src={image} alt={imageAlt} fill priority sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#04141d]/95 via-[#04141d]/70 to-[#04141d]/95" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#04141d]/95 via-transparent to-[#04141d]/30" />
+        </div>
+      ) : (
+        <>
+          <div className="bg-grid absolute inset-0 opacity-[0.15]" />
+          <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-primary/30 blur-3xl" />
+          <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-secondary/20 blur-3xl" />
+        </>
+      )}
       <div className="relative mx-auto max-w-7xl px-6">
         <Breadcrumbs items={breadcrumbs} />
         <h1 className="font-display mt-6 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">

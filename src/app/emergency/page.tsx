@@ -20,6 +20,8 @@ export default function EmergencyPage() {
         title="Emergency & Trauma Care"
         subtitle="Open 24 hours, 365 days. When every minute counts, our trauma team is ready before you arrive."
         breadcrumbs={[{ name: "Emergency", path: "/emergency" }]}
+        image="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Emergency trauma care response"
       >
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <a href={site.phone.emergencyHref} className="flex items-center gap-3 rounded-2xl bg-red-600 px-6 py-4 font-bold shadow-xl shadow-red-600/30 transition-transform hover:scale-105">

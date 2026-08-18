@@ -16,6 +16,8 @@ export default function AppointmentPage() {
         title="Book an Appointment"
         subtitle="Same-day consultations with Dr. N. K. Yadav. Quick, easy and confirmed within minutes."
         breadcrumbs={[{ name: "Appointment", path: "/appointment" }]}
+        image="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Doctor consultation for appointment booking"
       />
       <section className="bg-surface py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6">

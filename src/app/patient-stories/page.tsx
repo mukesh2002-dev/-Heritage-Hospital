@@ -21,6 +21,8 @@ export default function PatientStoriesPage() {
         title="Patient Stories"
         subtitle="Every recovery is a story of courage — and a reason we do what we do."
         breadcrumbs={[{ name: "Patient Stories", path: "/patient-stories" }]}
+        image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Happy patient sharing recovery story"
       />
       <SuccessStories />
       <TestimonialsSection />

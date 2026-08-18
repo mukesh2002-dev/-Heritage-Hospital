@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Privacy Policy", path: "/privacy" }])) }} />
-      <PageHero title="Privacy Policy" subtitle="How we collect, use and protect your information." breadcrumbs={[{ name: "Privacy Policy", path: "/privacy" }]} />
+      <PageHero title="Privacy Policy" subtitle="How we collect, use and protect your information." breadcrumbs={[{ name: "Privacy Policy", path: "/privacy" }]} image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1920&auto=format&fit=crop" imageAlt="Data privacy and security" />
       <section className="bg-background py-16">
         <div className="mx-auto max-w-4xl space-y-8 px-6">
           {[

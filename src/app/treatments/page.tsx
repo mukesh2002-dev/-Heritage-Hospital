@@ -20,6 +20,8 @@ export default function TreatmentsPage() {
         title="Treatments & Procedures"
         subtitle="From routine fracture care to complex spinal reconstruction — every treatment delivered with precision and compassion."
         breadcrumbs={[{ name: "Treatments", path: "/treatments" }]}
+        image="https://images.unsplash.com/photo-1579165466994-3f2b29e0ca2c?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Advanced orthopaedic surgery in progress"
       />
       <section className="bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-7xl space-y-6 px-6">

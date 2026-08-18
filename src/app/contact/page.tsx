@@ -18,6 +18,8 @@ export default function ContactPage() {
         title="Contact Us"
         subtitle="We're available around the clock. Reach out any time — a human will always answer."
         breadcrumbs={[{ name: "Contact", path: "/contact" }]}
+        image="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Hospital reception ready to help patients"
       />
       <ContactSection />
     </>

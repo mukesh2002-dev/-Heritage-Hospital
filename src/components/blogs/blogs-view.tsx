@@ -29,6 +29,8 @@ export function BlogsView() {
         title="Health Blog & News"
         subtitle="Practical, honest guidance on bones, joints, spine and recovery — from our doctors."
         breadcrumbs={[{ name: "Blogs", path: "/blogs" }]}
+        image="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Health blog articles being read"
       />
       <section className="bg-surface py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6">

@@ -20,6 +20,8 @@ export default function GalleryPage() {
         title="Gallery & Videos"
         subtitle="A glimpse inside our world-class facilities — modern, clean and designed around your comfort."
         breadcrumbs={[{ name: "Gallery", path: "/gallery" }]}
+        image="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Photography of hospital campus"
       />
       <GallerySection />
       <VideosSection />

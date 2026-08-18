@@ -34,6 +34,8 @@ export default function AboutPage() {
         title="About Shree Keshav Heritage Hospital"
         subtitle="A modern super-specialty orthopaedic hospital serving the people of Madhubani and North Bihar."
         breadcrumbs={[{ name: "About", path: "/about" }]}
+        image="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Shree Keshav Heritage Hospital building"
       />
       <AboutSection />
       <section className="bg-surface py-20">

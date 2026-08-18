@@ -25,6 +25,8 @@ export default function CareerPage() {
         title="Careers at Shree Keshav Heritage"
         subtitle="Join a team that treats every patient like family — and every colleague like a partner in care."
         breadcrumbs={[{ name: "Career", path: "/career" }]}
+        image="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1920&auto=format&fit=crop"
+        imageAlt="Medical team collaborating at the hospital"
       />
       <section className="bg-surface py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6">

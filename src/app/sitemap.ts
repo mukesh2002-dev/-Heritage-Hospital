@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/appointment",
     "/contact",
     "/career",
+    "/tender",
     "/privacy",
     "/terms",
   ];
